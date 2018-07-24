@@ -17,13 +17,13 @@ namespace App1
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(entryAge.Text))
+            if (string.IsNullOrWhiteSpace(entryUrl.Text))
             {
                 await DisplayAlert("Błąd", "Musisz wpisać wiek", "OK");
                 return;
             }
 
-            var age = entryAge.Text;
+            var age = entryUrl.Text;
 
             bool result = await DisplayAlert($"Masz {age} lat", "Czy masz ukończone 18 lat, by przejść na stronę?", "TAK", "NIE");
             if (result)
@@ -34,6 +34,24 @@ namespace App1
             {
                 await DisplayAlert("OK", "Nie przechodzimy na stronę", "OK");
             }
+        }
+
+        private async void Button2_Clicked(object sender, EventArgs e)
+        {
+            if (entryUrl == null || string.IsNullOrEmpty(entryUrl.Text))
+                return;
+            
+            var url = entryUrl.Text;
+            await Navigation.PushAsync(new WebViewPage(url));
+        }
+
+        private async void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            if (entryUrl == null || string.IsNullOrEmpty(entryUrl.Text))
+                return;
+
+            var url = entryUrl.Text;
+            await Navigation.PushAsync(new HttpClientPage(url));
         }
     }
 }

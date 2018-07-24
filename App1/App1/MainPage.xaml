@@ -1,17 +1,39 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:App1"
              x:Class="App1.MainPage">
-    <StackLayout>
-        <Label x:Name="lblHello" FontSize="Large" Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Start"
-           VerticalOptions="Center" />
-        <Label FontSize="Large" Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="End"
-           VerticalOptions="Center" />
-        <Entry x:Name="entryAge" HorizontalOptions="FillAndExpand" Placeholder="Wpisz swój wiek" />
-        <Button Text="OK" BackgroundColor="{StaticResource PrimaryColor}"
-                Clicked="Button_Clicked" />
-    </StackLayout>
+    <Grid ColumnSpacing="0" RowSpacing="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="9*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label Text="Fajny tytuł strony" FontSize="26" 
+               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+
+        <StackLayout Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
+            <Label x:Name="lblHello" FontSize="Large" Text="Welcome to Xamarin.Forms!" 
+               HorizontalOptions="Start"
+               VerticalOptions="Center" />
+            <Label FontSize="Large" Text="Welcome to Xamarin.Forms!" 
+               HorizontalOptions="End"
+               VerticalOptions="Center" />
+            <Entry x:Name="entryUrl" HorizontalOptions="FillAndExpand" Placeholder="Wpisz adres url" />
+            <Button Text="OK" BackgroundColor="{StaticResource PrimaryColor}"
+                    Clicked="Button_Clicked" />
+            
+        </StackLayout>
+
+        <Button Grid.Row="2" Grid.Column="0" Text="Web View" BackgroundColor="Blue"
+                    Clicked="Button2_Clicked" TextColor="White" BorderRadius="0" CornerRadius="0"/>
+        <Button Grid.Row="2" Grid.Column="1" Text="Http Client" BackgroundColor="Green"
+                    Clicked="Handle_Clicked" TextColor="White" BorderRadius="0" CornerRadius="0"/>
+
+    </Grid>
 </ContentPage>
