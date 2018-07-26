@@ -24,6 +24,17 @@ namespace App1
                 var response = await client.GetAsync(_url);
                 await DisplayAlert("Strona odpowiedziała", $"Kod zwrócony przez stronę: {response.StatusCode}", "OK");
             }
+
+            var test = new Test();
+            test.ToString();
         }
+
+        private class Test
+        {
+
+        }
+
+
     }
+
 }

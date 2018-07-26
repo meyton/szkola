@@ -53,5 +53,10 @@ namespace App1
             var url = entryUrl.Text;
             await Navigation.PushAsync(new HttpClientPage(url));
         }
+
+        private async void Handle_Clicked_1(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new CategoriesPage());
+        }
     }
 }

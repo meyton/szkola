@@ -27,6 +27,7 @@
             <Entry x:Name="entryUrl" HorizontalOptions="FillAndExpand" Placeholder="Wpisz adres url" />
             <Button Text="OK" BackgroundColor="{StaticResource PrimaryColor}"
                     Clicked="Button_Clicked" />
+            <Button Text="Categories" Clicked="Handle_Clicked_1" />
             
         </StackLayout>
 
