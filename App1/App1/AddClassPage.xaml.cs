@@ -9,7 +9,7 @@ namespace App1
     {
         public AddClassPage()
         {
-            // tutaj
+            BindingContext = this;
             InitializeComponent();
         }
 
@@ -29,5 +29,8 @@ namespace App1
 
             await Navigation.PopAsync();
         }
+
+        public KeyValuePair<string,string> Margin { 
+            get => new KeyValuePair<string,string>("Klucz", "Wartość"); }
     }
 }

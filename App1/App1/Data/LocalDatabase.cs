@@ -17,6 +17,11 @@ namespace App1.Data
             database.CreateTableAsync<Category>().Wait();
         }
 
+        public async Task<List<Recipe>> GetRecipesByCategoryId(int categoryId)
+        {
+            return await database.Table<Recipe>().Where(x => x.CategoryId == categoryId).ToListAsync();
+        }
+
         public async Task<List<T>> GetItems<T>() where T : class, new()
         {
             var items = await database.Table<T>().ToListAsync();

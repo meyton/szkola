@@ -12,9 +12,10 @@ namespace App1
             InitializeComponent();
         }
 
-        private void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            var item = e.Item;
+            var category = (Category) e.Item;
+            await Navigation.PushAsync(new RecipesPage(category));
         }
 
         private async void Handle_Clicked(object sender, System.EventArgs e)

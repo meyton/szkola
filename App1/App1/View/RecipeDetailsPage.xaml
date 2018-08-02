@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="App1.View.RecipeDetailsPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="20">
+            <Label Text="{Binding PageTitle}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+            <Entry Text="{Binding Recipe.Title}" Placeholder="Wpisz tytuł" />
+            <Entry Text="{Binding Recipe.Ingredients}" Placeholder="Wpisz składniki" />
+            <Editor Text="{Binding Recipe.Description}" BackgroundColor="LightGray" HeightRequest="80"/>
+            <Button Text="Zapisz" Command="{Binding SaveCommand}" />
+            <Button Text="Usuń" Command="{Binding DeleteCommand}" IsVisible="{Binding IsDeleteVisible}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

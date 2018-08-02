@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="App1.AddRecipePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Dodajesz nowy przepis" Margin="30"/>
+            <Label x:Name="lblCategory" Margin="30" />
+            <Entry x:Name="entryName" Placeholder="Wpisz tytuł przepisu" Margin="30" />
+            <Entry x:Name="entryIngredients" Placeholder="Wpisz składniki" Margin="30" />
+            <Editor x:Name="editorDescription" Text="Opis" Margin="30" />
+            <Button Text="Zapisz" Clicked="Handle_Clicked" Margin="50" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

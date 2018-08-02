@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Net.Http;
 using Xamarin.Forms;
 using App1.Data;
+using Newtonsoft.Json;
+using App1.Model.Cloud;
 
 namespace App1
 {
     public partial class HttpClientPage : ContentPage
     {
         private string _url;
+        private Services.HttpService _httpService;
         public HttpClientPage(string url)
         {
+            _httpService = new Services.HttpService();
             _url = url;
             InitializeComponent();
             if (Properties.AppProperties.ContainsKey("url"))
@@ -19,22 +23,20 @@ namespace App1
 
         private async void Handle_Clicked(object sender, System.EventArgs e)
         {
-            using (var client = new HttpClient())
+            //var comments = await _httpService.GetComments();
+            //var posts = await _httpService.GetPosts();
+            var comment = new Comment()
             {
-                var response = await client.GetAsync(_url);
-                await DisplayAlert("Strona odpowiedziała", $"Kod zwrócony przez stronę: {response.StatusCode}", "OK");
-            }
+                Body = "To nasz koment",
+                Email = "email@testowy.pl",
+                Name = "Komentujący",
+                PostId = 9877,
+                Id = 7454
+            };
 
-            var test = new Test();
-            test.ToString();
+            var result = await _httpService.PatchComment(comment);
+            await DisplayAlert("Sukces", $"Otrzymano odpowiedź: {result}", "OK");
         }
-
-        private class Test
-        {
-
-        }
-
-
     }
 
 }
