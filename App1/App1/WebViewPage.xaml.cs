@@ -10,8 +10,8 @@ namespace App1
         public WebViewPage(string url)
         {
             InitializeComponent();
-            wv.Source = url;
-            SaveLastUrl(url);
+            //wv.Source = url;
+            //SaveLastUrl(url);
         }
 
         private async void SaveLastUrl(string url)

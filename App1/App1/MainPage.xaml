@@ -3,46 +3,64 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:App1"
              x:Class="App1.MainPage">
-    <Grid ColumnSpacing="0" RowSpacing="0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
-            <RowDefinition Height="9*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <AbsoluteLayout>
+        <Grid AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" ColumnSpacing="0" RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="9*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <Label Text="Fajny tytuł strony" FontSize="26" 
-               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+            <Label Text="Fajny tytuł strony" FontSize="26" 
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
 
-        <ScrollView Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
-            <StackLayout>
-                <Label x:Name="lblHello" FontSize="Large" Text="Welcome to Xamarin.Forms!" 
-                   HorizontalOptions="Start"
-                   VerticalOptions="Center" />
-                <Label FontSize="Large" Text="Welcome to Xamarin.Forms!" 
-                   HorizontalOptions="End"
-                   VerticalOptions="Center" />
-                <Entry x:Name="entryUrl" HorizontalOptions="FillAndExpand" Placeholder="Wpisz adres url" />
-                <Button Text="OK" BackgroundColor="{StaticResource PrimaryColor}"
-                        Clicked="Button_Clicked" />
-                <Button Text="Categories" Clicked="Handle_Clicked_1" />
-                <Button Text="MVVM" Clicked="Handle_Clicked_2" />
+            <ScrollView Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
+                <StackLayout>
+                    <Label x:Name="lblHello" FontSize="Large" Text="Welcome to Xamarin.Forms!" 
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center" />
+                    <Label FontSize="Large" Text="Welcome to Xamarin.Forms!" 
+                       HorizontalOptions="End"
+                       VerticalOptions="Center" />
+                    <Entry x:Name="entryUrl" HorizontalOptions="FillAndExpand" Placeholder="Wpisz adres url" />
+                    <Button Text="OK" BackgroundColor="{StaticResource PrimaryColor}"
+                            Clicked="Button_Clicked" />
+                    <Button Text="Categories" Clicked="Handle_Clicked_1" />
+                    <Button Text="MVVM" Clicked="Handle_Clicked_2" />
 
-                <Button Text="Take photo" Clicked="TakePhoto_Clicked" />
-                <Button Text="Pick photo" Clicked="PickPhoto_Clicked" />
-                <Button Text="SCAN QR" Clicked="Scan_Clicked" />
-                <Image x:Name="image" Source="" />
+                    <Button Text="Take photo" Clicked="TakePhoto_Clicked" />
+                    <Button Text="Pick photo" Clicked="PickPhoto_Clicked" />
+                    <ActivityIndicator Color="Blue" x:Name="aiButton" IsVisible="false" />
+                    <Button Text="SCAN QR" Clicked="Scan_Clicked" />
+                        <Image x:Name="image" Source="ic_launcher.png" Aspect="AspectFill"/>
+                        <Image x:Name="image2" Source="ic_launcher.png" Aspect="AspectFit"/>
+                        <Image x:Name="image3" Source="ic_launcher.png" Aspect="Fill"/>
                 
-            </StackLayout>
-        </ScrollView>
-        <Button Grid.Row="2" Grid.Column="0" Text="Web View" BackgroundColor="Blue"
-                    Clicked="Button2_Clicked" TextColor="White" BorderRadius="0" CornerRadius="0"/>
-        <Button Grid.Row="2" Grid.Column="1" Text="Http Client" BackgroundColor="Green"
-                    Clicked="Handle_Clicked" TextColor="White" BorderRadius="0" CornerRadius="0"/>
-      
+                </StackLayout>
+            </ScrollView>
+            <Button Grid.Row="2" Grid.Column="0" Text="Web View" BackgroundColor="Blue"
+                        Clicked="Button2_Clicked" TextColor="White" BorderRadius="0" CornerRadius="0"/>
+            <Button Grid.Row="2" Grid.Column="1" Text="Http Client" BackgroundColor="Green"
+                        Clicked="Handle_Clicked" TextColor="White" BorderRadius="0" CornerRadius="0"/>
+          
 
-    </Grid>
+        </Grid>
+        
+        <BoxView AbsoluteLayout.LayoutFlags="SizeProportional" 
+                 AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Color="Black" 
+                 Opacity="0.3" IsVisible="{Binding IsBusy}" />
+        
+        <StackLayout BackgroundColor="White" Padding="30" Opacity="0.95" Spacing="25" 
+                     AbsoluteLayout.LayoutFlags="PositionProportional" 
+                     AbsoluteLayout.LayoutBounds="0.5, 0.5, 300, 300" 
+                     HorizontalOptions="FillAndExpand" IsVisible="{Binding IsBusy}" >
+            <ActivityIndicator HeightRequest="100" IsRunning="true" />
+            <Label Text="Action in progress..." HorizontalTextAlignment="Center" 
+                   FontSize="35" />
+        </StackLayout>
+    </AbsoluteLayout>
 </ContentPage>

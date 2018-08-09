@@ -14,5 +14,17 @@ namespace App1.Droid
             string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             return Path.Combine(path, filename);
         }
+
+        public string SaveImageLocally(Stream imageStream)
+        {
+            var file = GetLocalFilepath($"{DateTime.Now.Ticks}.png");
+            using (var stream = new MemoryStream())
+            {
+                imageStream.CopyTo(stream);
+                File.WriteAllBytes(file, stream.ToArray());
+            }
+
+            return file;
+        }
     }
 }

@@ -3,8 +3,9 @@
     <ContentPage.Content>
 
     <StackLayout>
-        <WebView x:Name="wv" Source="https://onet.pl" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
-            
+        <Label Text="Przed loaderem" />
+        <WebView x:Name="wv" Source="https://loading.io/spinners/microsoft/lg.rotating-balls-spinner.gif" BackgroundColor="Transparent" HeightRequest="100" WidthRequest="100" />
+        <Label Text="Po loaderze" />
     </StackLayout>
         
     </ContentPage.Content>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<l:MasterPage xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:l="clr-namespace:App1.Template;assembly=App1"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" 
+            xmlns:dxGrid="clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v18.1" 
+            x:Class="App1.TestPage">
+    <l:MasterPage.MainContent>
+       <!-- <forms:AnimationView 
+    x:Name="animationView" 
+    Animation="LottieLogo1.json" 
+    Loop="true" 
+    AutoPlay="true"
+    OnFinish="Handle_OnFinish"
+    PlaybackStartedCommand="{Binding PlayingCommand}"
+    PlaybackFinishedCommand="{Binding FinishedCommand}" 
+    ClickedCommand="{Binding ClickedCommand}"
+    VerticalOptions="FillAndExpand" 
+    HorizontalOptions="FillAndExpand" />-->
+      <StackLayout>
+        <Image x:Name="image" Source="{Binding Source1}" />
+        <Image x:Name="image2" Source="{Binding Source2}" />
+        <Image x:Name="image3" Source="ic_launcher.png" Aspect="Fill"/>
+      </StackLayout>
+    </l:MasterPage.MainContent>
+</l:MasterPage>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using App1.Model;
+using App1.ViewModel;
 using Plugin.Connectivity;
 using Plugin.Media;
 using Xamarin.Forms;
@@ -12,8 +14,26 @@ namespace App1
 {
 	public partial class MainPage : ContentPage
 	{
+        public class Busy : BaseViewModel
+        {
+            private bool _isBusy;
+            public bool IsBusy { get => _isBusy;
+                set
+                {
+                    if (value != _isBusy)
+                    {
+                        _isBusy = value;
+                        RaisePropertyChanged(nameof(IsBusy));
+                    }
+                }
+            } 
+        }
+
+        Busy busy;
 		public MainPage()
 		{
+            busy = new Busy();
+            BindingContext = busy;
 			InitializeComponent();
             lblHello.Text = "WSEI Szkoła programowania welcome to";
 		}
@@ -54,7 +74,8 @@ namespace App1
             }
             
             var url = entryUrl.Text;
-            await Navigation.PushAsync(new WebViewPage(url));
+            //await Navigation.PushAsync(new WebViewPage(url));
+            await Navigation.PushAsync(new SignaturePage());
         }
 
         private async void Handle_Clicked(object sender, System.EventArgs e)
@@ -63,7 +84,9 @@ namespace App1
                 return;
 
             var url = entryUrl.Text;
-            await Navigation.PushAsync(new HttpClientPage(url));
+            //await Navigation.PushAsync(new HttpClientPage(url));
+            var recipes = await App.LocalDB.GetItems<Recipe>();
+            await Navigation.PushAsync(new TestPage(recipes));
         }
 
         private async void Handle_Clicked_1(object sender, System.EventArgs e)
@@ -131,13 +154,16 @@ namespace App1
 
         async void Scan_Clicked(object sender, System.EventArgs e)
         {
-
+            busy.IsBusy = true;
+            await Task.Delay(4000);
             var scanner = new MobileBarcodeScanner();
 
             var result = await scanner.Scan();
 
             if (result != null)
                 await DisplayAlert("OK", "Scanned Barcode: " + result.Text, "OK");
+
+            busy.IsBusy = false;
         }
     }
 }

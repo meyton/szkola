@@ -27,11 +27,20 @@ namespace App1
             }
         }
 
+        public NavigationPage Navi { get; set; }
 		public App ()
 		{
 			InitializeComponent();
-			MainPage = new NavigationPage(new MainPage());
+            Navi = new NavigationPage(new MainPage());
+            MainPage = Navi;
 		}
+
+        public App(string testId)
+        {
+            InitializeComponent();
+            Navi = new NavigationPage(new SecondPage(testId));
+            MainPage = Navi;
+        }
 
 		protected override void OnStart ()
 		{
@@ -40,7 +49,7 @@ namespace App1
 
 		protected override void OnSleep ()
 		{
-			// Handle when your app sleeps
+            DependencyService.Get<INotificationService>().ShowNotification("", "");
 		}
 
 		protected override void OnResume ()

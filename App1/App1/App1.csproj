@@ -17,6 +17,10 @@
     <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
     <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="DevExpress.Mobile.Grid" Version="18.1.4" />
+    <PackageReference Include="Xam.Plugins.Notifier" Version="3.0.0" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="2.5.4" />
+    <PackageReference Include="Xamarin.Controls.SignaturePad.Forms" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +41,7 @@
     <Folder Include="View\" />
     <Folder Include="Utils\" />
     <Folder Include="Model\Cloud\" />
+    <Folder Include="Template\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="CategoriesPage.xaml %28kopia%29.cs" />
